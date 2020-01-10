@@ -52,9 +52,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLL\Class1.cs" />
+    <Compile Include="BLL\AlbumController.cs" />
+    <Compile Include="BLL\ArtistController.cs" />
     <Compile Include="Class1.cs" />
-    <Compile Include="DAL\Class1.cs" />
+    <Compile Include="DAL\ChinookContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
