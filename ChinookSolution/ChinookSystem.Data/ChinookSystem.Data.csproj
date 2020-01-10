@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,7 +44,8 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="DTOs\Class1.cs" />
-    <Compile Include="Entities\Class1.cs" />
+    <Compile Include="Entities\Album.cs" />
+    <Compile Include="Entities\Artist.cs" />
     <Compile Include="POCOs\Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
