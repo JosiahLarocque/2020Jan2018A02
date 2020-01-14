@@ -7,11 +7,14 @@ using System.Threading.Tasks;
 #region
 using ChinookSystem.Data.Entities;
 using ChinookSystem.DAL;
+using System.ComponentModel;
 #endregion
 namespace ChinookSystem.BLL
 {
+    [DataObject]
     public class ArtistController
     {
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
         //basic complete list of DBSet
         public List<Artist> Artist_List()
         {
