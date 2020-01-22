@@ -237,11 +237,16 @@
         DeleteMethod="Album_Delete" 
         InsertMethod="Album_Add" 
         SelectMethod="Album_List" 
-        UpdateMethod="Album_Update">
+        UpdateMethod="Album_Update"
+         OnDeleted="DeleteCheckForException"
+         OnInserted="InsertCheckForException"
+         OnUpdated="UpdateCheckForException"
+         OnSelected="SelectCheckForException">
     </asp:ObjectDataSource>
     <asp:ObjectDataSource ID="ArtistListODS" runat="server" 
         OldValuesParameterFormatString="original_{0}" 
         SelectMethod="Artist_List" 
-        TypeName="ChinookSystem.BLL.ArtistController">
+        TypeName="ChinookSystem.BLL.ArtistController"
+         OnSelected="SelectCheckForException">
     </asp:ObjectDataSource>
 </asp:Content>
