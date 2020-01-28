@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChinookSystem
+namespace ChinookSystem.Data.POCOs
 {
-    public class Class1
+    class dummy
     {
     }
 }

@@ -10,34 +10,16 @@
 namespace WebApp.SamplePages {
     
     
-    public partial class ODSReview {
+    public partial class ListViewODSCRUD {
         
         /// <summary>
-        /// Label3 control.
+        /// MessageUserControl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
-        
-        /// <summary>
-        /// AlbumTitleArg control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox AlbumTitleArg;
-        
-        /// <summary>
-        /// Fetch control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Fetch;
+        protected global::DMIT2018Common.UserControls.MessageUserControl MessageUserControl;
         
         /// <summary>
         /// AlbumList control.
@@ -46,7 +28,7 @@ namespace WebApp.SamplePages {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView AlbumList;
+        protected global::System.Web.UI.WebControls.ListView AlbumList;
         
         /// <summary>
         /// AlbumListODS control.

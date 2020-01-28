@@ -7,63 +7,54 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApp.SamplePages {
+namespace DMIT2018Common.UserControls {
     
     
-    public partial class ODSReview {
+    public partial class MessageUserControl {
         
         /// <summary>
-        /// Label3 control.
+        /// MessagePanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.Panel MessagePanel;
         
         /// <summary>
-        /// AlbumTitleArg control.
+        /// MessageTitleIcon control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox AlbumTitleArg;
+        protected global::System.Web.UI.WebControls.Label MessageTitleIcon;
         
         /// <summary>
-        /// Fetch control.
+        /// MessageTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Fetch;
+        protected global::System.Web.UI.WebControls.Label MessageTitle;
         
         /// <summary>
-        /// AlbumList control.
+        /// MessageLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView AlbumList;
+        protected global::System.Web.UI.WebControls.Label MessageLabel;
         
         /// <summary>
-        /// AlbumListODS control.
+        /// MessageDetailsRepeater control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource AlbumListODS;
-        
-        /// <summary>
-        /// ArtistListODS control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource ArtistListODS;
+        protected global::System.Web.UI.WebControls.Repeater MessageDetailsRepeater;
     }
 }
