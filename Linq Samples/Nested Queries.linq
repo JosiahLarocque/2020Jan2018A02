@@ -45,7 +45,7 @@ void Main()
 	results.Dump();
 	
 	
-	//Create a list of Playlist with more than 15 tracks.
+	//Create a list of Playlist with x number of tracks.
 	//show the playlist name, count of tracks, total play time for 
 	// 	the playlist and the list of tracks on the playlist
 	//For each track show the song name and Genre.
@@ -56,10 +56,11 @@ void Main()
 	//Playlist		PlaylistTracks		Tracks
 	// .Name		 .Count()			 List<T> t:(Name,milliseconds.Sum())
 	
+	var playlistsize = 15;
 	
 	var exercise = from x in Playlists
-					where x.PlaylistTracks.Count() >= 15
-					select new ExcercisePlaylist
+					where x.PlaylistTracks.Count() == playlistsize
+					select new ClientPlaylist
 					{
 						Name = x.Name,
 						TrackCount = x.PlaylistTracks.Count(),
@@ -96,7 +97,7 @@ public class MyPlayList
 	
 }
 
-public class ExcercisePlaylist
+public class ClientPlaylist
 {
 	public string Name{get;set;}
 	public int TrackCount{get;set;}
