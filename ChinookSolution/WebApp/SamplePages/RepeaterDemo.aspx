@@ -62,7 +62,7 @@
                     
                 </ItemTemplate>
                 <SeparatorTemplate>
-                    <hr style="height:3px"/>
+                    <hr style="height:3px; background-color:black"/>
                 </SeparatorTemplate>
                 <FooterTemplate>
                     &copy Data is sensitive. Do not release
