@@ -8,7 +8,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{5B63561D-6FD0-4452-B0DB-BF0E4C8EED6D}</ProjectGuid>
+    <ProjectGuid>{987D6973-0E0A-4A6A-94BE-6052E655BBA8}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -192,6 +192,7 @@
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="SamplePages\ListViewODSCRUD.aspx" />
     <Content Include="SamplePages\ODSReview.aspx" />
+    <Content Include="SamplePages\RepeaterDemo.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -378,6 +379,13 @@
     <Compile Include="SamplePages\ODSReview.aspx.designer.cs">
       <DependentUpon>ODSReview.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SamplePages\RepeaterDemo.aspx.cs">
+      <DependentUpon>RepeaterDemo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SamplePages\RepeaterDemo.aspx.designer.cs">
+      <DependentUpon>RepeaterDemo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -424,11 +432,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ChinookSystem.Data\ChinookSystem.Data.csproj">
-      <Project>{fb3323de-4546-4149-b94d-a3a51d27304c}</Project>
+      <Project>{655ee71e-5a05-449e-8f60-cb61134feefb}</Project>
       <Name>ChinookSystem.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\ChinookSystem\ChinookSystem.csproj">
-      <Project>{e3f63db3-5773-4b3a-a014-d50432fa90a7}</Project>
+      <Project>{5d8029d1-81bb-40fd-9815-a758a4d1c5e5}</Project>
       <Name>ChinookSystem</Name>
     </ProjectReference>
   </ItemGroup>
@@ -445,9 +453,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>56208</DevelopmentServerPort>
+          <DevelopmentServerPort>51080</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:44327/</IISUrl>
+          <IISUrl>http://localhost:44366/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

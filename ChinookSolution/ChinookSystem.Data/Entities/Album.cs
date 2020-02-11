@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 #endregion
+
 namespace ChinookSystem.Data.Entities
 {
     [Table("Albums")]
@@ -16,17 +17,16 @@ namespace ChinookSystem.Data.Entities
         private string _ReleaseLabel;
 
         [Key]
-
         public int AlbumId { get; set; }
         [Required(ErrorMessage ="Album title is required.")]
         [StringLength(160, ErrorMessage ="Album title is limited to 160 characters")]
         public string Title { get; set; }
-        //[Required(ErrorMessage = "Artist ID is required")]
-        [Range(1, int.MaxValue, ErrorMessage = ("Artist ID out of range"))]
+       // [Required(ErrorMessage ="Artist Id is required")]
+        [Range(1,int.MaxValue,ErrorMessage =("Artist Id out of range"))]
         public int ArtistId { get; set; }
 
         public int ReleaseYear { get; set; }
-        [StringLength(50, ErrorMessage ="Album release label is limited to 50 characters b")]
+        [StringLength(50, ErrorMessage ="Album release label is limited to 50 characters")]
         public string ReleaseLabel
         {
             get
@@ -39,8 +39,7 @@ namespace ChinookSystem.Data.Entities
             }
         }
 
-        //notmapped 
-
+        //notmapped properties
         [NotMapped]
         public string ReleaseInfo
         {

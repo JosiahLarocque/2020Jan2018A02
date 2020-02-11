@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace ChinookSystem.Data.POCOs
 {
-    class Class1
+    public class PlaylistSong
     {
+        public string SongName { get; set; }
+        public string Genre { get; set; }
     }
 }

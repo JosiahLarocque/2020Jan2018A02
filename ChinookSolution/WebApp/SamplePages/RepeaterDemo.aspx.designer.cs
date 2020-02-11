@@ -10,60 +10,69 @@
 namespace WebApp.SamplePages {
     
     
-    public partial class ODSReview {
+    public partial class RepeaterDemo {
         
         /// <summary>
-        /// Label3 control.
+        /// NumberOfTracks control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.TextBox NumberOfTracks;
         
         /// <summary>
-        /// AlbumTitleArg control.
+        /// Submit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox AlbumTitleArg;
+        protected global::System.Web.UI.WebControls.Button Submit;
         
         /// <summary>
-        /// Fetch control.
+        /// RequiredNumberOfTracks control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Fetch;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredNumberOfTracks;
         
         /// <summary>
-        /// AlbumList control.
+        /// CompareNumberOfTracks control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView AlbumList;
+        protected global::System.Web.UI.WebControls.CompareValidator CompareNumberOfTracks;
         
         /// <summary>
-        /// AlbumListODS control.
+        /// ValidationSummary1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource AlbumListODS;
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
         
         /// <summary>
-        /// ArtistListODS control.
+        /// ClientPlaylistDTO control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource ArtistListODS;
+        protected global::System.Web.UI.WebControls.Repeater ClientPlaylistDTO;
+        
+        /// <summary>
+        /// ClientPlaylistDTOODS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource ClientPlaylistDTOODS;
     }
 }
