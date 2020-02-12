@@ -7,146 +7,180 @@
   </Connection>
 </Query>
 
-//Grouping
+//distinct data
 
-//basically, grouping is the technique of placing a large pile of data
-// into smaller piles of data depending on a criteria
+//List of countries in which we have customers
+var results1 = (from x in Customers
+				orderby x.Country
+				select x.Country).Distinct();
+results1.Dump();
 
-//navigational properties allow for natural grouping of parent to child (pkey/fkey)
-//	collections
-//ex tablerowinstance.childnavproperty.Count() counts all the child 
-//		records associated with the parent instance
+//boolean filters .Any() and .All()
 
-//problem: what if there is no navigational property for the grouping
-//	of the data collection?
+//.Any() method iterates through the entire collection to see
+// if any of the items match the specified condition
+//returns NO data
+//an instance of the collection that receives a true on the 
+//	condition is selected for processing
 
-//Here you can use teh group clause to create a set of smaller collections
-//	based on the desired criteria
+Genres.OrderBy(x => x.Name).Dump();
 
-//It is important to remember that once the smaller groups are created, ALL
-//	reporting MUST use the smaller groups as the collection reference
-
-//Report albums by ReleaseYear 
-from x in Albums
-group x by x.ReleaseYear into gYear
-select gYear
-
-//parts of a Group
-//Key Component
-//instance collection component
-
-//side note hot key for commenting
-// ctrl + K + C
-// ctrl + K + U
-
-//The key component is created by the "by" criteria
-//the "by" criteria can be
-// a) a single attribute/property
-// b) a class
-// c) a list of attributess/properties
-
-//Where and Orderby clauses can be executed against the 
-//	group key component or group field
-//you can filter(where) or order before grouping
-//however, Orderby before grouping is basically useless
-
-//Report albums by ReleaseYear showing the year and 
-// the number of Albums for that year. Order by the
-// year with the most albums, then by the year within count.
-
-from x in Albums 
-group x by x.ReleaseYear into gYear
-orderby gYear.Count() descending, gYear.Key
-select new
-{
-	year = gYear.Key,
-	albumcount = gYear.Count()
-}
-
-
-//Report albums by ReleaseYear showing the year and 
-// the number of Albums for that year. Order by the
-// year with the most albums, then by the year within count.
-// the album title, artist name and number of album tracks.
-// Report ONLY albums of the 90s. 
-
-from x in Albums 
-where x.ReleaseYear > 1989 && x.ReleaseYear < 2000
-group x by x.ReleaseYear into gYear
-orderby gYear.Count() descending, gYear.Key
-select new
-{
-	year = gYear.Key,
-	albumcount = gYear.Count(),
-	albumandartist = from gr in gYear
-					 select new
-					 {
-					 	title = gr.Title,
-						artist = gr.Artist.Name,
-						trackcount = gr.Tracks.Count(trk => trk.AlbumId == gr.AlbumId)
-					 }
-}
-
-//Grouping can be done on entity attributes determined using a
-//	navigational property.
-//List tracks for albums produced after 2010 by Genre name. Count
-//	tracks for the Name
-
-from trk in Tracks
-where trk.Album.ReleaseYear > 2010
-group trk by trk.Genre.Name into gTemp
-orderby gTemp.Key.Name
-//select gTemp
-select new 
-{
-	genre = gTemp.Key,
-	numbreof = gTemp.Count()
-}
-
-//same report but using the entity as the group criteria
-//when you have multiple attributes in a group key
-//	you must reference the attribute using Key.attribute
-
-from trk in Tracks
-where trk.Album.ReleaseYear > 2010
-group trk by trk.Genre into gTemp
-orderby gTemp.Key.Name
-//select gTemp
-select new 
-{
-	genre = gTemp.Key.Name,
-	numbreof = gTemp.Count()
-}
-
-//Using Group techniques, create a list of customers by
-//	employee support individual showing the employee name
-//	lastname, firstname (phone); the number of customers
-//	for this employee; and a customer list for the
-//	employee. In this customer list show the state, city
-//	and customer name (last, first). Order the customer 
-//	list by state then city
-
-//decision one: where to start: group the customers
-//						   Why: easy to reach parent info usng nProperties
-//group on what?:group customers on a specific employee 
-//				:report info about employee (lastname, firstname, phone)
-//would grouping on the employee entity supply the employee info in the Key?
-//decision two: group the customers by the employee support entity
-from c in Customers
-group c by c.SupportRepIdEmployee into gTemp
-select new
-{
-	employee = gTemp.Key.LastName + ", " + gTemp.Key.FirstName + " (" + gTemp.Key.Phone + ")",
-	customercount = gTemp.Count(),
-	customers = from gc in gTemp
-				orderby gc.State, gc.City
+//Show Genres that have tracks which are NOT on any playlist
+var results2 = from x in Genres
+				where x.Tracks.Any(trk => trk.PlaylistTracks.Count() == 0)
+				orderby x.Name
 				select new
 				{
-					state = gc.State,
-					city = gc.City,
-					name = gc.LastName + ", " + gc.FirstName
-				}
-}
+					genre = x.Name,
+					tracksingenre = x.Tracks.Count(),
+					boringtracks = from y in x.Tracks
+									where y.PlaylistTracks.Count() == 0
+									select y.Name
+									
+				};
+results2.Dump();
+
+//.All() method iterates through the entire collection to see
+// if all of the items match the specified condition
+//returns NO data just true or false
+//an instance of the collection that receives a true on the 
+//	condition is selected for processing
+//Show Genres that have tracks which have all their tracks appearing
+//at least once on a playlist
+var populargenres = from x in Genres
+				where x.Tracks.Any(trk => trk.PlaylistTracks.Count() == 0)
+				orderby x.Name
+				select new
+				{
+					genre = x.Name,
+					tracksingenre = x.Tracks.Count(),
+					boringtracks = from y in x.Tracks
+									where y.PlaylistTracks.Count() > 0
+									select new 
+									{
+										song = y.Name,
+										count = y.PlaylistTracks.Count()
+									}
+									
+				};
+populargenres.Dump();
+
+//Sometimes you have two collections that need to be compared
+//Usually you are looking for items that are the same
+//or you are looking for items that are different
+//In either case you are comparing one collection to a second collection
+
+//obtain a distinct list of all playlist tracks for Roberto Almeida
+//	username is AlmeidaR
+var almeida = (from x in PlaylistTracks
+				where x.Playlist.UserName.Contains("Almeida")
+				orderby x.Track.Name
+				select new
+				{
+					genre = x.Track.Genre.Name,
+					trackid = x.TrackId,
+					song = x.Track.Name
+				}).Distinct().Dump();
+				
+				
+//obtain a distinct list of all playlist tracks for Michelle Brooks
+//	username is BrooksM
+var brooks = (from x in PlaylistTracks
+				where x.Playlist.UserName.Contains("Brooks")
+				orderby x.Track.Name
+				select new
+				{
+					genre = x.Track.Genre.Name,
+					trackid = x.TrackId,
+					song = x.Track.Name
+				}).Distinct().Dump();
+				
+//when you are comparing two collections, you need to determin
+//	which collection will be listA and which will be listB
+
+//Create a list of tracks that both Roberto and Michelle like
+
+var likes = almeida
+			.Where(a => brooks.Any(b => a.trackid == b.trackid))
+			.OrderBy(a => a.genre)
+			.Select(a => a)
+			.Dump();
+			
+//Create a list of tracks that Roberto has but Michelle doesn't
+
+var robertoOnly = almeida
+			.Where(a => !brooks.Any(b => a.trackid == b.trackid))
+			.OrderBy(a => a.genre)
+			.Select(a => a)
+			.Dump();
+				
+//Create a list of tracks that Roberto has but Roberto doesn't
+
+var michelleOnlyAny = brooks
+			.Where(a => !almeida.Any(b => a.trackid == b.trackid))
+			.OrderBy(a => a.genre)
+			.Select(a => a)
+			.Dump();		
+			
+//using .All()
+//note where the ! is placed 
+
+var michelleOnlyAll = brooks
+			.Where(a => almeida.All(b => a.trackid != b.trackid))
+			.OrderBy(a => a.genre)
+			.Select(a => a)
+			.Dump();				
+
+//.Union()
+//to concatenate two or more results from multiple queries
+//	you can use the .Union()
+//This operates in the same fashion as the sql union operator
+//The rules are quite similar between the two "union"
+//	number of columns same
+//	column datatype same
+//	ordering done on last query
+
+//Create a list of Albums showing their title, total track count,
+//	total price of tracks, and the Average length of the tracks in seconds
+
+//query1 will report albums that have tracks
+//query2 will report albums without tracks (there are no tracks for (Sum() or Average())
+
+//syntax (query1).Union(query2).Union(queryn).OrderBy(First field).ThenBy(nth field)).
+
+//Count() is an integer
+//Sum() is a decimal (UnitPrice is a decimal)
+//Average() is returned as a double (even though Milliseconds is an integer)
+
+var unionresults = (from x in Albums
+					where x.Tracks.Count() > 0
+					select new 
+					{
+						title = x.Title,
+						trackcount = x.Tracks.Count(),
+						trackcost = x.Tracks.Sum(y => y.Tracks.UnitPrice)
+						avglengthA = x.Tracks.Average(y => y.Milliseconds)/1000.0
+						avglengthB = x.Tracks.Average(y => y.Milliseconds/1000.0)
+					}).Union(from x in Albums
+					where x.Tracks.Count() == 0
+					select new 
+					{
+						title = x.Title,
+						trackcount = 0,
+						trackcost = 0.00m,
+						avglength = 0.0
+					})
+					.OrderBy(y => y.trackcount)
+					.ThenBy(y => y.title)
+					.Dump();
+					
+
+
+
+
+
+
+			
 
 
 
