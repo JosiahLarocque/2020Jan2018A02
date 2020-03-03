@@ -48,8 +48,11 @@
     </div>
     <div class="col-sm-10">
         <asp:Label ID="Label5" runat="server" Text="Tracks"></asp:Label>&nbsp;&nbsp;
-        <asp:Label ID="TracksBy" runat="server" ></asp:Label>&nbsp;&nbsp;
-        <asp:Label ID="SearchArg" runat="server" ></asp:Label><br />
+        <asp:Panel ID="QueryPanel" runat="server" Visible="true">
+            <asp:Label ID="TracksBy" runat="server" ></asp:Label>&nbsp;&nbsp;
+            <asp:Label ID="SearchArg" runat="server" ></asp:Label><br />
+        </asp:Panel>
+        
         <asp:ListView ID="TracksSelectionList" runat="server"
            
             OnItemCommand="TracksSelectionList_ItemCommand"
@@ -241,6 +244,20 @@
          >
     </asp:ObjectDataSource>
    
+    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server"
+        OldValuesParameterFormatString="original_{0}" 
+        SelectMethod="List_TracksForPlaylistSelection" 
+        TypeName="ChinookSystem.BLL.TrackController"
+         OnSelected="CheckForException">
 
+        <SelectParameters>
+            <asp:ControlParameter ControlID="TracksBy" 
+                PropertyName="Text" DefaultValue="xzcvbnf" 
+                Name="tracksby" Type="String"></asp:ControlParameter>
+            <asp:ControlParameter ControlID="SearchArg" 
+                PropertyName="Text" DefaultValue="lylhjfcv"
+                Name="arg" Type="String"></asp:ControlParameter>
+        </SelectParameters>
+    </asp:ObjectDataSource>
 
 </asp:Content>

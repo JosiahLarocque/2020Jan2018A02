@@ -54,8 +54,51 @@ namespace ChinookSystem.BLL
             using (var context = new ChinookContext())
             {
                 List<TrackList> results = null;
-
-               //code to go here
+                int id = 0;
+                if(int.TryParse(arg, out id))
+                {
+                    //lookup for MediaType or Genre
+                    results = (from x in context.Tracks
+                               where ((tracksby.Equals("MediaType") && x.MediaTypeId == id)
+                                 || tracksby.Equals("Genre") && x.GenreId == id)
+                              orderby x.Name
+                              select new TrackList
+                              {
+                                  TrackID = x.TrackId,
+                                  Name = x.Name,
+                                  Title = x.Album.Title,
+                                  ArtistName = x.Album.Artist.Name,
+                                  MediaName = x.MediaType.Name,
+                                  GenreName = x.Genre.Name,
+                                  Composer = x.Composer,
+                                  Milliseconds = x.Milliseconds,
+                                  Bytes = x.Bytes,
+                                  UnitPrice = x.UnitPrice
+                              }).ToList();
+                }
+                else
+                {
+                    //lookup for Artist or Album
+                    results = (from x in context.Tracks
+                              where ((tracksby.Equals("Artist") && x.Album.Artist.Name.Contains(arg))
+                                || tracksby.Equals("Album") && x.Album.Title.Contains(arg))
+                              orderby x.Name
+                              select new TrackList
+                              {
+                                  TrackID = x.TrackId,
+                                  Name = x.Name,
+                                  Title = x.Album.Title,
+                                  ArtistName = x.Album.Artist.Name,
+                                  MediaName = x.MediaType.Name,
+                                  GenreName = x.Genre.Name,
+                                  Composer = x.Composer,
+                                  Milliseconds = x.Milliseconds,
+                                  Bytes = x.Bytes,
+                                  UnitPrice = x.UnitPrice
+                              }).ToList();
+                }
+               
+                         
 
                 return results;
             }
