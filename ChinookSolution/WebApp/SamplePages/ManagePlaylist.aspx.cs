@@ -24,31 +24,71 @@ namespace WebApp.SamplePages
             MessageUserControl.HandleDataBoundException(e);
         }
 
+
         protected void ArtistFetch_Click(object sender, EventArgs e)
         {
-            
-                //code to go here
 
-          }
-
-        protected void MediaTypeFetch_Click(object sender, EventArgs e)
-        {
-
-                //code to go here
+            if (string.IsNullOrEmpty(ArtistName.Text))
+            {
+                //message to the user
+                MessageUserControl.ShowInfo("Selection Error", "Select an Artist Name ");
+            }
+            else
+            {
+                TracksBy.Text = "Artist";
+                SearchArg.Text = ArtistName.Text;
+                //bind web form control
+                TracksSelectionList.DataBind();
+            }
 
         }
 
+        protected void MediaTypeDDL_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (MediaTypeDDL.SelectedIndex == 0)
+            {
+                //message to the user
+                MessageUserControl.ShowInfo("Selection Error", "Select a media type");
+            }
+            else
+            {
+                TracksBy.Text = "MediaType";
+                SearchArg.Text = MediaTypeDDL.SelectedValue;
+                //bind web form control
+                TracksSelectionList.DataBind();
+            }
+        }
         protected void GenreFetch_Click(object sender, EventArgs e)
         {
-
-                //code to go here
+            if (GenreDDL.SelectedIndex == 0)
+            {
+                //message to the user
+                MessageUserControl.ShowInfo("Selection Error", "Select a genre type");
+            }
+            else
+            {
+                TracksBy.Text = "Genre";
+                SearchArg.Text = GenreDDL.SelectedValue;
+                //bind web form control
+                TracksSelectionList.DataBind();
+            }
 
         }
 
         protected void AlbumFetch_Click(object sender, EventArgs e)
         {
-
-                //code to go here
+            if (string.IsNullOrEmpty(AlbumTitle.Text))
+            {
+                //message to the user
+                MessageUserControl.ShowInfo("Selection Error", "Enter an Album Title");
+            }
+            else
+            {
+                TracksBy.Text = "Album";
+                SearchArg.Text = AlbumTitle.Text;
+                //bind web form control
+                TracksSelectionList.DataBind();
+            }
 
         }
 
@@ -90,5 +130,6 @@ namespace WebApp.SamplePages
             
         }
 
+        
     }
 }

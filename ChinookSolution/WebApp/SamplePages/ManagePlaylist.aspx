@@ -1,12 +1,14 @@
 ﻿<%@ Page Title="OLTP Playlist" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" 
     CodeBehind="ManagePlaylist.aspx.cs" Inherits="WebApp.SamplePages.ManagePlaylist" %>
 
+<%@ Register Src="~/UserControls/MessageUserControl.ascx" TagPrefix="uc1" TagName="MessageUserControl" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 <div>
     <h1>Manage Playlists (UI/UX TRX Sample)</h1>
 </div>
     <%--Add MessageUserControl--%>
+    <uc1:MessageUserControl runat="server" ID="MessageUserControl" />
 
     <div class="row">
     <div class="col-sm-2">
@@ -21,10 +23,11 @@
         <asp:DropDownList ID="MediaTypeDDL" runat="server"
             Width="150px" DataSourceID="MediaTypeDDLODS" 
             DataTextField="DisplayText" 
-            DataValueField="IDValueField">
+            DataValueField="IDValueField"
+             AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="MediaTypeDDL_SelectedIndexChanged">
+            <asp:ListItem Value="0">select ...</asp:ListItem>
         </asp:DropDownList><br />
-        <asp:Button ID="MediaTypeFetch" runat="server" 
-            Text="Fetch" OnClick="MediaTypeFetch_Click"  />
+       
         <br /><br />
          <asp:Label ID="Label3" runat="server" Text="Genre"></asp:Label><br />
         <asp:DropDownList ID="GenreDDL" runat="server"

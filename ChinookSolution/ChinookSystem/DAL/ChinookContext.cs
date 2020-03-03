@@ -27,5 +27,14 @@ namespace ChinookSystem.DAL
         public DbSet<Album> Albums { get; set; }
 
         public DbSet<Playlist> Playlists{ get; set; }
+
+        public DbSet<Genre> Genres { get; set; }
+
+        public DbSet<MediaType> MediaTypes { get; set; }
+
+        public DbSet<Track> Tracks { get; set; }
+
+
+
     }
 }
