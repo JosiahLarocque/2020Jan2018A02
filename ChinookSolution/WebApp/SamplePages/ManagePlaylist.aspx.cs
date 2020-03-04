@@ -24,23 +24,19 @@ namespace WebApp.SamplePages
             MessageUserControl.HandleDataBoundException(e);
         }
 
-
         protected void ArtistFetch_Click(object sender, EventArgs e)
         {
-
             if (string.IsNullOrEmpty(ArtistName.Text))
             {
                 //message to the user
-                MessageUserControl.ShowInfo("Selection Error", "Select an Artist Name ");
+                MessageUserControl.ShowInfo("Entry Error", "Select an artist name or part of.");
             }
             else
             {
                 TracksBy.Text = "Artist";
                 SearchArg.Text = ArtistName.Text;
-                //bind web form control
                 TracksSelectionList.DataBind();
             }
-
         }
 
         protected void MediaTypeDDL_SelectedIndexChanged(object sender, EventArgs e)
@@ -48,30 +44,21 @@ namespace WebApp.SamplePages
             if (MediaTypeDDL.SelectedIndex == 0)
             {
                 //message to the user
-                MessageUserControl.ShowInfo("Selection Error", "Select a media type");
+                MessageUserControl.ShowInfo("Selection Error", "Enter a media type");
             }
             else
             {
                 TracksBy.Text = "MediaType";
                 SearchArg.Text = MediaTypeDDL.SelectedValue;
-                //bind web form control
                 TracksSelectionList.DataBind();
             }
         }
+
         protected void GenreFetch_Click(object sender, EventArgs e)
         {
-            if (GenreDDL.SelectedIndex == 0)
-            {
-                //message to the user
-                MessageUserControl.ShowInfo("Selection Error", "Select a genre type");
-            }
-            else
-            {
-                TracksBy.Text = "Genre";
-                SearchArg.Text = GenreDDL.SelectedValue;
-                //bind web form control
-                TracksSelectionList.DataBind();
-            }
+            TracksBy.Text = "Genre";
+            SearchArg.Text = GenreDDL.SelectedValue;
+            TracksSelectionList.DataBind();
 
         }
 
@@ -80,23 +67,21 @@ namespace WebApp.SamplePages
             if (string.IsNullOrEmpty(AlbumTitle.Text))
             {
                 //message to the user
-                MessageUserControl.ShowInfo("Selection Error", "Enter an Album Title");
+                MessageUserControl.ShowInfo("Entry Error", "Enter an album title or part of.");
             }
             else
             {
                 TracksBy.Text = "Album";
                 SearchArg.Text = AlbumTitle.Text;
-                //bind web form control
                 TracksSelectionList.DataBind();
             }
-
         }
 
         protected void PlayListFetch_Click(object sender, EventArgs e)
         {
             //security is yet to be implemented
-            //this page needs to know the username of the currently logged user
-            //temporarily we will hard code the username 
+            //this page needs to known the username of the currently logged user
+            //temporarily we will hard core the username
             string username = "HansenB";
             if (string.IsNullOrEmpty(PlaylistName.Text))
             {
@@ -106,52 +91,50 @@ namespace WebApp.SamplePages
             {
                 //Your code does NOT need to have a try/catch
                 //The try/catch is embedded within MessageUserControl
-                //The syntax for executing with MessageUserControl 
-                // MessageUserControl.TryRun(() => { coding block }, "Success Title", "Success Message");
+                //The syntax for executing with MessageUserControl
+                //   MessageUserControl.TryRun(() => { coding block},"Success Title","Success message");
                 MessageUserControl.TryRun(() =>
                 {
                     PlaylistTracksController sysmgr = new PlaylistTracksController();
                     List<UserPlaylistTrack> info = sysmgr.List_TracksForPlaylist(PlaylistName.Text, username);
                     PlayList.DataSource = info;
                     PlayList.DataBind();
-
-                }, "Playlist","View current songs on playlist");
+                }, "Playlist", "View current songs on playlist");
             }
- 
         }
 
         protected void MoveDown_Click(object sender, EventArgs e)
         {
             //code to go here
- 
+
         }
 
         protected void MoveUp_Click(object sender, EventArgs e)
         {
             //code to go here
- 
+
         }
 
         protected void MoveTrack(int trackid, int tracknumber, string direction)
         {
             //call BLL to move track
- 
+
         }
 
 
         protected void DeleteTrack_Click(object sender, EventArgs e)
         {
             //code to go here
- 
+
         }
 
-        protected void TracksSelectionList_ItemCommand(object sender, 
+        protected void TracksSelectionList_ItemCommand(object sender,
             ListViewCommandEventArgs e)
         {
             //code to go here
-            
+
         }
 
-        
+
     }
 }

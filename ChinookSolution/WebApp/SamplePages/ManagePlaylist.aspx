@@ -9,29 +9,29 @@
 </div>
     <%--Add MessageUserControl--%>
     <uc1:MessageUserControl runat="server" ID="MessageUserControl" />
-
     <div class="row">
     <div class="col-sm-2">
-        <asp:Label ID="Label1" runat="server" Text="Artist" ></asp:Label><br />
-        <asp:TextBox ID="ArtistName" runat="server"
-            Width="150px" placeholder="artist name">
+        <asp:Label ID="Label1" runat="server" Text="Artist" 
+             Font-Bold="true" Font-Size="Larger"></asp:Label><br />
+        <asp:TextBox ID="ArtistName" runat="server" CssClass="form-control"
+             placeholder="artist name"> 
         </asp:TextBox><br />
         <asp:Button ID="ArtistFetch" runat="server" Text="Fetch" OnClick="ArtistFetch_Click"
               />
         <br /><br />
          <asp:Label ID="Label2" runat="server" Text="Media"></asp:Label><br />
         <asp:DropDownList ID="MediaTypeDDL" runat="server"
-            Width="150px" DataSourceID="MediaTypeDDLODS" 
+             CssClass="form-control" DataSourceID="MediaTypeDDLODS" 
             DataTextField="DisplayText" 
             DataValueField="IDValueField"
              AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="MediaTypeDDL_SelectedIndexChanged">
             <asp:ListItem Value="0">select ...</asp:ListItem>
         </asp:DropDownList><br />
-       
+        
         <br /><br />
          <asp:Label ID="Label3" runat="server" Text="Genre"></asp:Label><br />
         <asp:DropDownList ID="GenreDDL" runat="server"
-            Width="150px" DataSourceID="GenreDDLODS" 
+             CssClass="form-control" DataSourceID="GenreDDLODS" 
             DataTextField="DisplayText" 
             DataValueField="IDValueField">
         </asp:DropDownList><br />
@@ -39,8 +39,8 @@
             />
         <br /><br />
          <asp:Label ID="Label4" runat="server" Text="Album"></asp:Label><br />
-        <asp:TextBox ID="AlbumTitle" runat="server"
-            Width="150px" placeholder="album title">
+        <asp:TextBox ID="AlbumTitle" runat="server" ToolTip="Enter an partial album title"
+             CssClass="form-control" placeholder="album title">
         </asp:TextBox><br />
         <asp:Button ID="AlbumFetch" runat="server" Text="Fetch" OnClick="AlbumFetch_Click"
              />
@@ -48,15 +48,14 @@
     </div>
     <div class="col-sm-10">
         <asp:Label ID="Label5" runat="server" Text="Tracks"></asp:Label>&nbsp;&nbsp;
-        <asp:Panel ID="QueryPanel" runat="server" Visible="true">
+        <asp:Panel ID="QueryPanel" runat="server" Visible="false">
             <asp:Label ID="TracksBy" runat="server" ></asp:Label>&nbsp;&nbsp;
-            <asp:Label ID="SearchArg" runat="server" ></asp:Label><br />
+            <asp:Label ID="SearchArg" runat="server" ></asp:Label>
         </asp:Panel>
-        
+      <%-- <br />--%>
         <asp:ListView ID="TracksSelectionList" runat="server"
-           
             OnItemCommand="TracksSelectionList_ItemCommand"
-             >
+            DataSourceID="TracksSelectionListODS">
             <AlternatingItemTemplate>
                 <tr style="background-color: #FFFFFF; color: #284775;">
                     <td>
@@ -201,7 +200,7 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Name">
                     <ItemTemplate>
-                        <asp:Label runat="server" ID="TrachName"
+                        <asp:Label runat="server" ID="TrackName"
                             Text='<%# Eval("TrackName") %>'></asp:Label>
                           &nbsp;&nbsp;
                     </ItemTemplate>
@@ -244,18 +243,17 @@
          >
     </asp:ObjectDataSource>
    
-    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server"
+    <asp:ObjectDataSource ID="TracksSelectionListODS" runat="server" 
         OldValuesParameterFormatString="original_{0}" 
         SelectMethod="List_TracksForPlaylistSelection" 
         TypeName="ChinookSystem.BLL.TrackController"
          OnSelected="CheckForException">
-
         <SelectParameters>
             <asp:ControlParameter ControlID="TracksBy" 
-                PropertyName="Text" DefaultValue="xzcvbnf" 
+                PropertyName="Text" DefaultValue="xcvdfg" 
                 Name="tracksby" Type="String"></asp:ControlParameter>
             <asp:ControlParameter ControlID="SearchArg" 
-                PropertyName="Text" DefaultValue="lylhjfcv"
+                PropertyName="Text" DefaultValue="cnvbj" 
                 Name="arg" Type="String"></asp:ControlParameter>
         </SelectParameters>
     </asp:ObjectDataSource>
