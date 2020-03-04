@@ -34,6 +34,7 @@ namespace ChinookSystem.DAL
 
         public DbSet<Track> Tracks { get; set; }
 
+        public DbSet<PlaylistTrack> PlaylistTracks { get; set; }
 
 
     }
