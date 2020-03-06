@@ -8,37 +8,37 @@ using System.Threading.Tasks;
 using ChinookSystem.Data.Entities;
 using ChinookSystem.DAL;
 using System.ComponentModel; //ODS
-using DMIT2018Common.UserControls; // used by error handling user control
-using ChinookSystem.Data.DTOs;
+using DMIT2018Common.UserControls;  //used by error handle user control
 using ChinookSystem.Data.POCOs;
+using ChinookSystem.Data.DTOs;
 #endregion
 
 namespace ChinookSystem.BLL
 {
     [DataObject]
-    public class PlaylistController
+    public class PlayListController
     {
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public List<ClientPlaylist> Playlist_GetBySize(int playlistsize)
+        [DataObjectMethod(DataObjectMethodType.Select,false)]
+        public List<ClientPlayList> Playlist_GetBySize(int playlistsize)
         {
             using (var context = new ChinookContext())
             {
-                var exercise = from x in context.Playlists
-                               where x.PlaylistTracks.Count() == playlistsize
-                               select new ClientPlaylist
-                               {
-                                   Name = x.Name,
-                                   TrackCount = x.PlaylistTracks.Count(),
-                                   PlayTime = x.PlaylistTracks.Sum(pltrk => pltrk.Track.Milliseconds),
-                                   PlaylistSongs = (from strk in x.PlaylistTracks
+                var plresults = from pl in context.Playlists
+                                where pl.PlaylistTracks.Count() == playlistsize
+                                select new ClientPlayList
+                                {
+                                    Name = pl.Name,
+                                    TrackCount = pl.PlaylistTracks.Count(),
+                                    PlayTime = pl.PlaylistTracks.Sum(pltrk => pltrk.Track.Milliseconds),
+                                    PlaylistSongs = from strk in pl.PlaylistTracks
                                                     orderby strk.Track.Genre.Name
-                                                    select new PlaylistSong
+                                                    select new PlayListSong
                                                     {
                                                         SongName = strk.Track.Name,
                                                         Genre = strk.Track.Genre.Name
-                                                    })
-                               };
-                return exercise.ToList();
+                                                    }
+                                };
+                return plresults.ToList();
             }
         }
     }

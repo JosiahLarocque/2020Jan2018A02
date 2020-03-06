@@ -14,10 +14,10 @@
     <br />
     <uc1:MessageUserControl runat="server" ID="MessageUserControl" />
     <asp:ValidationSummary ID="ValidationSummaryE" runat="server" 
-        HeaderText="Correct the following concerns for the edited data:" 
+         HeaderText="Correct the following concerns for the editted data."
          ValidationGroup="EGroup"/>
-    <asp:ValidationSummary ID="ValidationSummaryI" runat="server" 
-        HeaderText="Correct the following concerns for the edited data:" 
+        <asp:ValidationSummary ID="ValidationSummaryI" runat="server" 
+         HeaderText="Correct the following concerns for the inserted data."
          ValidationGroup="IGroup"/>
     <br />
     <%-- ODS CRUD requires an ODS with CRUD methods indicated
@@ -49,7 +49,7 @@
             <tr style="background-color: #FFFFFF; color: #284775;">
                 <td>
                     <asp:Button runat="server" CommandName="Delete" Text="Remove" ID="DeleteButton"
-                         OnClientClick="return confirm('Are you sure you wish to remove this album')"/>
+                         OnClientClick="return confirm('Are you sure you wish to remove this album.')"/>
                     <asp:Button runat="server" CommandName="Edit" Text="Edit" ID="EditButton" />
                 </td>
                 <td>
@@ -79,20 +79,20 @@
                 ErrorMessage="Title is required." Display="None"
                  ControlToValidate="TitleTextBoxE" ValidationGroup="EGroup">
             </asp:RequiredFieldValidator>
-            <asp:RegularExpressionValidator ID="RegExTitleTextBoxE" runat="server"
+            <asp:RegularExpressionValidator ID="RegExTitleTextBoxE" runat="server" 
                 ErrorMessage="Title is limited to 160 characters." Display="None"
                  ControlToValidate="TitleTextBoxE" ValidationGroup="EGroup"
                  ValidationExpression="^.{1,160}$">
             </asp:RegularExpressionValidator>
-            <asp:RegularExpressionValidator ID="RegExReleaseLabelTextBoxE" runat="server"
-                ErrorMessage="ReleaseLabel is limited to 50 characters." Display="None"
+            <asp:RegularExpressionValidator ID="RegExReleaseLabelTextBoxE" runat="server" 
+                ErrorMessage="Release Label is limited to 50 characters." Display="None"
                  ControlToValidate="ReleaseLabelTextBoxE" ValidationGroup="EGroup"
                  ValidationExpression="^.{0,50}$">
             </asp:RegularExpressionValidator>
             <tr style="background-color: #999999;">
                 <td>
                     <asp:Button runat="server" CommandName="Update" Text="Update" 
-                        ID="UpdateButton"  ValidationGroup="EGroup"/>
+                        ID="UpdateButton" ValidationGroup="EGroup" />
                     <asp:Button runat="server" CommandName="Cancel" Text="Cancel" ID="CancelButton" />
                 </td>
                 <td>
@@ -120,8 +120,7 @@
             </tr>
         </EditItemTemplate>
         <EmptyDataTemplate>
-            <table runat="server" style="background-color: #FFFFFF; border-collapse: collapse;
-                border-color: #999999; border-style: none; border-width: 1px;">
+            <table runat="server" style="background-color: #FFFFFF; border-collapse: collapse; border-color: #999999; border-style: none; border-width: 1px;">
                 <tr>
                     <td>No data was returned.</td>
                 </tr>
@@ -132,20 +131,20 @@
                 ErrorMessage="Title is required." Display="None"
                  ControlToValidate="TitleTextBoxI" ValidationGroup="IGroup">
             </asp:RequiredFieldValidator>
-            <asp:RegularExpressionValidator ID="RegExTitleTextBoxI" runat="server"
+            <asp:RegularExpressionValidator ID="RegExTitleTextBoxI" runat="server" 
                 ErrorMessage="Title is limited to 160 characters." Display="None"
                  ControlToValidate="TitleTextBoxI" ValidationGroup="IGroup"
                  ValidationExpression="^.{1,160}$">
             </asp:RegularExpressionValidator>
-            <asp:RegularExpressionValidator ID="RegExReleaseLabelTextBoxI" runat="server"
-                ErrorMessage="ReleaseLabel is limited to 50 characters." Display="None"
+            <asp:RegularExpressionValidator ID="RegExReleaseLabelTextBoxI" runat="server" 
+                ErrorMessage="Release Label is limited to 50 characters." Display="None"
                  ControlToValidate="ReleaseLabelTextBoxI" ValidationGroup="IGroup"
                  ValidationExpression="^.{0,50}$">
             </asp:RegularExpressionValidator>
             <tr style="">
                 <td>
-                    <asp:Button runat="server" CommandName="Insert" Text="Insert" ID="InsertButton" 
-                        ValidationGroup="IGroup"/>
+                    <asp:Button runat="server" CommandName="Insert" Text="Insert" 
+                        ID="InsertButton" ValidationGroup="IGroup" />
                     <asp:Button runat="server" CommandName="Cancel" Text="Clear" ID="CancelButton" />
                 </td>
                 <td>
@@ -176,7 +175,7 @@
             <tr style="background-color: #E0FFFF; color: #333333;">
                 <td>
                     <asp:Button runat="server" CommandName="Delete" Text="Remove" ID="DeleteButton" 
-                         OnClientClick="return confirm('Are you sure you wish to remove this album')"/>
+                        OnClientClick="return confirm('Are you sure you wish to remove this album.')"/>
                     <asp:Button runat="server" CommandName="Edit" Text="Edit" ID="EditButton" />
                 </td>
                 <td>
@@ -217,16 +216,14 @@
                                 <th runat="server">Artist</th>
                                 <th runat="server">Year</th>
                                 <th runat="server">Label</th>
-                               
-                               
                             </tr>
                             <tr runat="server" id="itemPlaceholder"></tr>
                         </table>
                     </td>
                 </tr>
                 <tr runat="server">
-                    <td runat="server" style="text-align: center; background-color: #5D7B9D; 
-                            font-family: Verdana, Arial, Helvetica, sans-serif; color: #FFFFFF">
+                    <td runat="server" style="text-align: center; background-color: #c0c0c0; 
+                            font-family: Verdana, Arial, Helvetica, sans-serif; color: #000000">
                         <asp:DataPager runat="server" ID="DataPager1">
                             <Fields>
                                 <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False"></asp:NextPreviousPagerField>
@@ -242,7 +239,7 @@
             <tr style="background-color: #E2DED6; font-weight: bold; color: #333333;">
                 <td>
                     <asp:Button runat="server" CommandName="Delete" Text="Remove" ID="DeleteButton" 
-                        OnClientClick="return confirm('Are you sure you wish to remove this album')"/>
+                        OnClientClick="return confirm('Are you sure you wish to remove this album.')"/>
                     <asp:Button runat="server" CommandName="Edit" Text="Edit" ID="EditButton" />
                 </td>
                 <td>

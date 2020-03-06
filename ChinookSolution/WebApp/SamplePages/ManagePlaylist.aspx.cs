@@ -59,7 +59,7 @@ namespace WebApp.SamplePages
             TracksBy.Text = "Genre";
             SearchArg.Text = GenreDDL.SelectedValue;
             TracksSelectionList.DataBind();
-
+            
         }
 
         protected void AlbumFetch_Click(object sender, EventArgs e)
@@ -85,7 +85,7 @@ namespace WebApp.SamplePages
             string username = "HansenB";
             if (string.IsNullOrEmpty(PlaylistName.Text))
             {
-                MessageUserControl.ShowInfo("Missing Data", "Enter the playlist name");
+                MessageUserControl.ShowInfo("Missing Data","Enter the playlist name");
             }
             else
             {
@@ -93,46 +93,62 @@ namespace WebApp.SamplePages
                 //The try/catch is embedded within MessageUserControl
                 //The syntax for executing with MessageUserControl
                 //   MessageUserControl.TryRun(() => { coding block},"Success Title","Success message");
-                MessageUserControl.TryRun(() =>
+                MessageUserControl.TryRun(( ) =>
                 {
                     PlaylistTracksController sysmgr = new PlaylistTracksController();
                     List<UserPlaylistTrack> info = sysmgr.List_TracksForPlaylist(PlaylistName.Text, username);
                     PlayList.DataSource = info;
                     PlayList.DataBind();
-                }, "Playlist", "View current songs on playlist");
+                },"Playlist","View current songs on playlist");
             }
         }
 
         protected void MoveDown_Click(object sender, EventArgs e)
         {
             //code to go here
-
+ 
         }
 
         protected void MoveUp_Click(object sender, EventArgs e)
         {
             //code to go here
-
+ 
         }
 
         protected void MoveTrack(int trackid, int tracknumber, string direction)
         {
             //call BLL to move track
-
+ 
         }
 
 
         protected void DeleteTrack_Click(object sender, EventArgs e)
         {
             //code to go here
-
+ 
         }
 
-        protected void TracksSelectionList_ItemCommand(object sender,
+        protected void TracksSelectionList_ItemCommand(object sender, 
             ListViewCommandEventArgs e)
         {
-            //code to go here
-
+            string username = "HansenB";
+            if (string.IsNullOrEmpty(PlaylistName.Text))
+            {
+                MessageUserControl.ShowInfo("Missing Data", "Enter the playlist name");
+            }
+            else
+            {
+               
+                MessageUserControl.TryRun(() =>
+                {
+                    PlaylistTracksController sysmgr = new PlaylistTracksController();
+                    sysmgr.Add_TrackToPLaylist(PlaylistName.Text, username,
+                        int.Parse(e.CommandArgument.ToString()));
+                    List<UserPlaylistTrack> info = sysmgr.List_TracksForPlaylist(PlaylistName.Text, username);
+                    PlayList.DataSource = info;
+                    PlayList.DataBind();
+                }, "Add track to Playlist", "Track has been added to the playlist");
+            }
         }
 
 

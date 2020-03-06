@@ -4,13 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-#region Additional Namespaces
+#region Additional Namespace
 using System.Web;
 #endregion
 
-
 namespace DMIT2018Common.UserControls
 {
+    /// <summary>
+    /// Summary description for BusinessRuleException
+    /// </summary>
     [Serializable]
     public class BusinessRuleException : Exception
     {

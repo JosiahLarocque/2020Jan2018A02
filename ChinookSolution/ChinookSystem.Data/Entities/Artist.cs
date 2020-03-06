@@ -1,53 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-#region Additional Namespaces
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-#endregion
-
 namespace ChinookSystem.Data.Entities
 {
-    //identify the sql entity (table) this class maps
-    [Table("Artists")]
-    public class Artist
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
+
+    public partial class Artist
     {
-        private string _Name;
-
-        //check your sql entity for type of pkey (identity or other)
-        [Key]
-        public int ArtistId { get; set; }
-
-        //fully implement nullable strings (course standard)
-        //check if the sql entity attribute has any constraints
-        [StringLength(120, ErrorMessage ="Artist Name is limited to 120 characters")]
-        public string Name
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Artist()
         {
-            get
-            {
-                return _Name;
-            }
-            set
-            {
-                //if (string.IsNullOrEmpty(value))
-                //{
-                //    _Name = null;
-                //}
-                //else
-                //{
-                //    _Name = value;
-                //}
-
-                _Name = string.IsNullOrEmpty(value) ? null : value;
-            }
+            Albums = new HashSet<Album>();
         }
 
-        //[NotMapped] properties
+        public int ArtistId { get; set; }
 
-        //navigational properties
+        [StringLength(120)]
+        public string Name { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Album> Albums { get; set; }
     }
 }

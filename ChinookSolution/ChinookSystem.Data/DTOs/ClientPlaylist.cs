@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,11 +10,11 @@ using ChinookSystem.Data.POCOs;
 
 namespace ChinookSystem.Data.DTOs
 {
-    public class ClientPlaylist
+    public class ClientPlayList
     {
         public string Name { get; set; }
         public int TrackCount { get; set; }
         public int PlayTime { get; set; }
-        public IEnumerable<PlaylistSong> PlaylistSongs { get; set; }
+        public IEnumerable<PlayListSong> PlaylistSongs { get; set; }
     }
 }

@@ -176,8 +176,11 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="css\font-awesome.css" />
+    <Content Include="css\font-awesome.min.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -189,10 +192,17 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Account\Web.config" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="SamplePages\AccessingDataSetControls.aspx" />
     <Content Include="SamplePages\ListViewODSCRUD.aspx" />
     <Content Include="SamplePages\ManagePlaylist.aspx" />
     <Content Include="SamplePages\ODSReview.aspx" />
+    <Content Include="SamplePages\ProofOfLinqPad.aspx" />
     <Content Include="SamplePages\RepeaterDemo.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -366,6 +376,13 @@
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SamplePages\AccessingDataSetControls.aspx.cs">
+      <DependentUpon>AccessingDataSetControls.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SamplePages\AccessingDataSetControls.aspx.designer.cs">
+      <DependentUpon>AccessingDataSetControls.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SamplePages\ListViewODSCRUD.aspx.cs">
       <DependentUpon>ListViewODSCRUD.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -375,6 +392,7 @@
     </Compile>
     <Compile Include="SamplePages\ManagePlaylist.aspx.cs">
       <DependentUpon>ManagePlaylist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="SamplePages\ManagePlaylist.aspx.designer.cs">
       <DependentUpon>ManagePlaylist.aspx</DependentUpon>
@@ -385,6 +403,13 @@
     </Compile>
     <Compile Include="SamplePages\ODSReview.aspx.designer.cs">
       <DependentUpon>ODSReview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SamplePages\ProofOfLinqPad.aspx.cs">
+      <DependentUpon>ProofOfLinqPad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SamplePages\ProofOfLinqPad.aspx.designer.cs">
+      <DependentUpon>ProofOfLinqPad.aspx</DependentUpon>
     </Compile>
     <Compile Include="SamplePages\RepeaterDemo.aspx.cs">
       <DependentUpon>RepeaterDemo.aspx</DependentUpon>

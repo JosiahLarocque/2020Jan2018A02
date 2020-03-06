@@ -40,15 +40,6 @@ namespace WebApp.SamplePages {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredNumberOfTracks;
         
         /// <summary>
-        /// CompareNumberOfTracks control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CompareValidator CompareNumberOfTracks;
-        
-        /// <summary>
         /// ValidationSummary1 control.
         /// </summary>
         /// <remarks>
@@ -58,21 +49,30 @@ namespace WebApp.SamplePages {
         protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
         
         /// <summary>
-        /// ClientPlaylistDTO control.
+        /// MessageUserControl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater ClientPlaylistDTO;
+        protected global::DMIT2018Common.UserControls.MessageUserControl MessageUserControl;
         
         /// <summary>
-        /// ClientPlaylistDTOODS control.
+        /// ClientPlayListDTO control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource ClientPlaylistDTOODS;
+        protected global::System.Web.UI.WebControls.Repeater ClientPlayListDTO;
+        
+        /// <summary>
+        /// ClientPlayListDTOODS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource ClientPlayListDTOODS;
     }
 }

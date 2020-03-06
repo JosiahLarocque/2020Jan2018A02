@@ -18,7 +18,6 @@ namespace WebApp.SamplePages
         {
             MessageUserControl.HandleDataBoundException(e);
         }
-
         protected void InsertCheckForException(object sender, ObjectDataSourceStatusEventArgs e)
         {
             if (e.Exception == null)
@@ -30,19 +29,17 @@ namespace WebApp.SamplePages
                 MessageUserControl.HandleDataBoundException(e);
             }
         }
-
         protected void UpdateCheckForException(object sender, ObjectDataSourceStatusEventArgs e)
         {
             if (e.Exception == null)
             {
-                MessageUserControl.ShowInfo("Success", "Album has been Updated.");
+                MessageUserControl.ShowInfo("Success", "Album has been updated.");
             }
             else
             {
                 MessageUserControl.HandleDataBoundException(e);
             }
         }
-
         protected void DeleteCheckForException(object sender, ObjectDataSourceStatusEventArgs e)
         {
             if (e.Exception == null)
@@ -54,8 +51,5 @@ namespace WebApp.SamplePages
                 MessageUserControl.HandleDataBoundException(e);
             }
         }
-
     }
-
-    
 }
